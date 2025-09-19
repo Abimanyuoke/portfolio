@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 
 const SunIcon = () => (
@@ -35,7 +37,7 @@ export default function Navbar() {
 
     return (
         <header className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 lg:px-20">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-light m-0">ABICODE</h1>
+            <h1 className="text-3xl md:text-2xl lg:text-3xl font-light m-0">ABICODE</h1>
             <nav className="hidden md:flex items-center lg:gap-12">
                 <a href="#" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50">Home</a>
                 <a href="#" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50">Blog</a>
@@ -58,15 +60,13 @@ export default function Navbar() {
                     transition: "background 0.5s cubic-bezier(.68,-0.55,.27,1.55)",
                     marginLeft: 16,
                 }}
-                aria-label="Toggle dark mode"
-            >
+                aria-label="Toggle dark mode">
                 <span
                     style={{
                         display: "block",
                         transition: "transform 0.5s cubic-bezier(.68,-0.55,.27,1.55)",
                         transform: darkMode ? "rotate(360deg) scale(1.1)" : "rotate(0deg) scale(1)",
-                    }}
-                >
+                    }}>
                     {darkMode ? <SunIcon /> : <MoonIcon />}
                 </span>
             </button>
