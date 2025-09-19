@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import "./circle-transition.css";
 
 const SunIcon = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,6 +27,10 @@ const MoonIcon = () => (
 
 export default function Navbar() {
     const [darkMode, setDarkMode] = useState(false);
+    const [circleActive, setCircleActive] = useState(false);
+    const [circleStyle, setCircleStyle] = useState<React.CSSProperties>({});
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const buttonRef = useRef<HTMLButtonElement | null>(null);
 
     useEffect(() => {
         if (darkMode) {
@@ -35,9 +40,35 @@ export default function Navbar() {
         }
     }, [darkMode]);
 
+    const handleToggle = () => {
+        if (buttonRef.current) {
+            const rect = buttonRef.current.getBoundingClientRect();
+            setCircleStyle({
+                position: "fixed",
+                left: rect.left + rect.width / 2,
+                top: rect.top + rect.height / 2,
+                width: 48,
+                height: 48,
+                borderRadius: "50%",
+                zIndex: 9999,
+                pointerEvents: "none",
+                background: darkMode ? "#eee" : "#222",
+                transition: "none",
+                transform: "translate(-50%, -50%)",
+                animation: darkMode ? "circle-move-dark 0.8s forwards" : "circle-move-light 0.8s forwards",
+            });
+        }
+        setCircleActive(true);
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => {
+            setDarkMode((prev) => !prev);
+            setCircleActive(false);
+        }, 800); // waktu animasi lingkaran
+    };
+
     return (
-        <header className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 lg:px-20">
-            <h1 className="text-3xl md:text-2xl lg:text-3xl font-light m-0">ABICODE</h1>
+        <header className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 lg:px-20" style={{ position: "relative", overflow: "visible" }}>
+            <h1 className="text-3xl md:text-2xl lg:text-3xl font-light m    -0">ABICODE</h1>
             <nav className="hidden md:flex items-center lg:gap-12">
                 <a href="#" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50">Home</a>
                 <a href="#" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50">Blog</a>
@@ -45,7 +76,8 @@ export default function Navbar() {
                 <a href="#" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50">About</a>
             </nav>
             <button
-                onClick={() => setDarkMode((prev) => !prev)}
+                ref={buttonRef}
+                onClick={handleToggle}
                 style={{
                     width: 48,
                     height: 48,
@@ -59,6 +91,8 @@ export default function Navbar() {
                     cursor: "pointer",
                     transition: "background 0.5s cubic-bezier(.68,-0.55,.27,1.55)",
                     marginLeft: 16,
+                    position: "relative",
+                    zIndex: 10,
                 }}
                 aria-label="Toggle dark mode">
                 <span
@@ -70,6 +104,11 @@ export default function Navbar() {
                     {darkMode ? <SunIcon /> : <MoonIcon />}
                 </span>
             </button>
+            {circleActive && (
+                <div
+                    style={circleStyle}
+                />
+            )}
         </header>
     );
 }
