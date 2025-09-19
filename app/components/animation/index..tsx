@@ -22,7 +22,8 @@ import arduinouno from "@/public/techStack/arduino-uno.svg";
 import python from "@/public/techStack/python.svg";
 import aftereffecte from "@/public/techStack/ae.svg";
 import photoshop from "@/public/techStack/ps.svg";
-import Image, { StaticImageData } from "next/image";
+import TechItem from "./TechItem";
+import { StaticImageData } from "next/image";
 
 interface ItemProops {
     title: string;
@@ -137,47 +138,42 @@ export default function TechStack() {
 
     return (
         <React.Fragment>
-            <section className="bg-dark-100 pb-20">
+            <div className="pb-20">
                 <h3
                     data-aos="fade-right"
                     data-aos-duration="500"
-                    className="text-surface-50 font-glancyr font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] max-w-7xl pt-20 xl:pl-48 lg:pl-32 md:pl-12 sm:pl-8 pl-4 pb-2"
-                >
+                    className="text-surface-50 font-glancyr font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] pt-20 pb-2">
                     We have used <span className="text-oranges-300">30+ </span>programming langguages, frameworks, and digital tools{" "}
                 </h3>
-                <div data-aos="fade-up" data-aos-duration="500" className="wrapper overflow-x-scroll lg:overflow-hidden relative flex items-center lg:w-11/12 max-w-full h-[100px] mt-8 lg:mx-auto">
-                    {row1.map((item, i) => (
-                        <div key={i} className={`itemLeft item${i + 1} bg-dark-200 flex justify-center mx-2 w-full px-16 lg:w-[280px] py-4 items-center border-2 border-surface-50 rounded-[8px] lg:absolute`}>
-                            <Image src={item.IMGUrl} alt="html" />
-                            <p className="text-surface-50 xl:text-[18px] lg:text-[17px] md:text-[16px] sm:text-[15px] text-[14px] font-normal ml-6">{item.title}</p>
-                        </div>
-                    ))}
+                <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-right mt-8 lg:mx-auto">
+                    <div className="marquee-content flex gap-6">
+                        {[...row1, ...row1].map((item, i) => (
+                            <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                        ))}
+                    </div>
                 </div>
-                <div data-aos="fade-up" data-aos-duration="500" className="wrapper overflow-scroll lg:overflow-hidden flex items-center justify-center relative lg:w-11/12 max-w-full h-[100px]  mx-auto">
-                    {row2.map((item, i) => (
-                        <div key={i} className={`itemRight item${i + 1} bg-dark-200 flex justify-center mx-2 w-full px-16 lg:w-[280px] py-4 items-center border-2 border-surface-50 rounded-[8px] lg:absolute`}>
-                            <Image src={item.IMGUrl} alt="html" />
-                            <p className="text-surface-50 text-[18px] font-normal ml-6">{item.title}</p>
-                        </div>
-                    ))}
+                <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-left mx-auto">
+                    <div className="marquee-content flex gap-6">
+                        {[...row2, ...row2].map((item, i) => (
+                            <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                        ))}
+                    </div>
                 </div>
-                <div data-aos="fade-up" data-aos-duration="500" className="wrapper overflow-scroll lg:overflow-hidden relative flex items-center lg:w-11/12 max-w-full h-[100px] lg:mx-auto">
-                    {row3.map((item, i) => (
-                        <div key={i} className={`itemLeft item${i + 1} bg-dark-200 flex justify-center mx-2 w-full px-16 lg:w-[280px] py-4 items-center border-2 border-surface-50 rounded-[8px] lg:absolute`}>
-                            <Image src={item.IMGUrl} alt="html" />
-                            <p className="text-surface-50 text-[18px] font-normal ml-6">{item.title}</p>
-                        </div>
-                    ))}
+                <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-right lg:mx-auto">
+                    <div className="marquee-content flex gap-6">
+                        {[...row3, ...row3].map((item, i) => (
+                            <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                        ))}
+                    </div>
                 </div>
-                <div data-aos="fade-up" data-aos-duration="500" className="wrapper overflow-scroll lg:overflow-hidden flex items-center justify-center relative lg:w-11/12 max-w-full h-[100px]  mx-auto">
-                    {row4.map((item, i) => (
-                        <div key={i} className={`itemRight item${i + 1} bg-dark-200 flex justify-center mx-2 w-full px-16 lg:w-[280px] py-4 items-center border-2 border-surface-50 rounded-[8px] lg:absolute`}>
-                            <Image src={item.IMGUrl} alt="html" />
-                            <p className="text-surface-50 text-[18px] font-normal ml-6">{item.title}</p>
-                        </div>
-                    ))}
+                <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-left mx-auto">
+                    <div className="marquee-content flex gap-6">
+                        {[...row4, ...row4].map((item, i) => (
+                            <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                        ))}
+                    </div>
                 </div>
-            </section>
+            </div>
         </React.Fragment>
     );
 }
