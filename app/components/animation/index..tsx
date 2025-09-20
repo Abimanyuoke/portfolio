@@ -1,5 +1,4 @@
 import React from "react";
-import "./marquee.css";
 import html from "@/public/techStack/html.svg";
 import css from "@/public/techStack/css.svg";
 import js from "@/public/techStack/js.svg";
@@ -24,6 +23,7 @@ import aftereffecte from "@/public/techStack/ae.svg";
 import photoshop from "@/public/techStack/ps.svg";
 import TechItem from "./TechItem";
 import { StaticImageData } from "next/image";
+import Marquee from "react-fast-marquee";
 
 interface ItemProops {
     title: string;
@@ -145,105 +145,43 @@ export default function TechStack() {
                     className="text-surface-50 font-glancyr font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] pt-20 pb-2">
                     We have used <span className="text-oranges-300">30+ </span>programming langguages, frameworks, and digital tools{" "}
                 </h3>
-                <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-right mt-8 lg:mx-auto">
-                    <div className="marquee-content flex gap-6">
-                        {[...row1, ...row1].map((item, i) => (
-                            <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
-                        ))}
+                <Marquee direction="right" speed={50} gradient={false}>
+                    <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-right mt-8 lg:mx-auto">
+                        <div className="marquee-content flex gap-6">
+                            {[...row1, ...row1].map((item, i) => (
+                                <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                            ))}
+                        </div>
                     </div>
-                </div>
-                <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-left mx-auto">
-                    <div className="marquee-content flex gap-6">
-                        {[...row2, ...row2].map((item, i) => (
-                            <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
-                        ))}
+                </Marquee>
+                <Marquee direction="left" speed={50} gradient={false}>
+                    <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-left mx-auto">
+                        <div className="marquee-content flex gap-6">
+                            {[...row2, ...row2].map((item, i) => (
+                                <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                            ))}
+                        </div>
                     </div>
-                </div>
-                <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-right lg:mx-auto">
-                    <div className="marquee-content flex gap-6">
-                        {[...row3, ...row3].map((item, i) => (
-                            <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
-                        ))}
+                </Marquee>
+                <Marquee direction="right" speed={50} gradient={false}>
+                    <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-right lg:mx-auto">
+                        <div className="marquee-content flex gap-6">
+                            {[...row3, ...row3].map((item, i) => (
+                                <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                            ))}
+                        </div>
                     </div>
-                </div>
-                <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-left mx-auto">
-                    <div className="marquee-content flex gap-6">
-                        {[...row4, ...row4].map((item, i) => (
-                            <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
-                        ))}
+                </Marquee>
+                <Marquee direction="left" speed={50} gradient={false}>
+                    <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-left mx-auto">
+                        <div className="marquee-content flex gap-6">
+                            {[...row4, ...row4].map((item, i) => (
+                                <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                            ))}
+                        </div>
                     </div>
-                </div>
+                </Marquee>
             </div>
         </React.Fragment>
     );
 }
-
-
-// "use client";
-// import React from "react";
-// import Image, { StaticImageData } from "next/image";
-// import "./marquee.css";
-
-// import html from "@/public/techStack/html.svg";
-// import css from "@/public/techStack/css.svg";
-// import js from "@/public/techStack/js.svg";
-// import nodejs from "@/public/techStack/nodejs.svg";
-// import ts from "@/public/techStack/typescript.svg";
-// import tailwind from "@/public/techStack/tailwindcss.svg";
-// import react from "@/public/techStack/reactjs.svg";
-// import nextjs from "@/public/techStack/nextjs2.svg";
-// import flutter from "@/public/techStack/flutter.svg";
-// import python from "@/public/techStack/python.svg";
-// import git from "@/public/techStack/git.svg";
-// import github from "@/public/techStack/github.svg";
-// import figma from "@/public/techStack/figma.svg";
-// import vscode from "@/public/techStack/vscode.svg";
-
-// interface ItemProps {
-//     title: string;
-//     IMGUrl: StaticImageData;
-// }
-
-// const items: ItemProps[] = [
-//     { title: "HTML", IMGUrl: html },
-//     { title: "CSS", IMGUrl: css },
-//     { title: "JavaScript", IMGUrl: js },
-//     { title: "Node.js", IMGUrl: nodejs },
-//     { title: "TypeScript", IMGUrl: ts },
-//     { title: "TailwindCSS", IMGUrl: tailwind },
-//     { title: "React.js", IMGUrl: react },
-//     { title: "Next.js", IMGUrl: nextjs },
-//     { title: "Flutter", IMGUrl: flutter },
-//     { title: "Python", IMGUrl: python },
-//     { title: "Git", IMGUrl: git },
-//     { title: "GitHub", IMGUrl: github },
-//     { title: "Figma", IMGUrl: figma },
-//     { title: "VSCode", IMGUrl: vscode },
-// ];
-
-// export default function TechStack() {
-//     return (
-//         <div className="relative max-w-6xl mx-auto overflow-hidden py-16">
-//             {/* Blur kiri */}
-//             <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-gray-100 to-transparent z-20"></div>
-//             {/* Blur kanan */}
-//             <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-gray-100 to-transparent z-20"></div>
-
-//             <h3 className="text-center text-3xl font-bold mb-10">
-//                 Our <span className="text-orange-400">Tech Stack</span>
-//             </h3>
-
-//             {/* Container marquee */}
-//             <div className="marquee">
-//                 <div className="marquee__content flex gap-10">
-//                     {[...items, ...items].map((item, i) => (
-//                         <div key={i} className="flex flex-col items-center min-w-[100px]">
-//                             <Image src={item.IMGUrl} alt={item.title} width={60} height={60} />
-//                             <span className="mt-2 text-sm text-gray-700">{item.title}</span>
-//                         </div>
-//                     ))}
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
