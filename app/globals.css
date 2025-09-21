@@ -9,10 +9,19 @@
   --font-mono: var(--font-geist-mono);
 }
 
-body {
+/* body {
   @apply bg-black text-white relative font-sans h-screen overflow-x-hidden;
-}
+} */
 
 html {
   @apply scroll-smooth;
 }
+
+.dark {
+  --background: #000000;
+}
+
+body {
+  @apply bg-[var(--background)] transition-colors duration-500;
+}
+
