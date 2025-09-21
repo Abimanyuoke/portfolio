@@ -46,10 +46,6 @@ export default function TechStack() {
             title: "TypeScript",
             ImgTech: ts,
         },
-        {
-            title: "TailwindCSS",
-            ImgTech: tailwind,
-        },
     ];
     const row2: ItemProops[] = [
         {
@@ -63,6 +59,10 @@ export default function TechStack() {
         {
             title: "Figma",
             ImgTech: figma,
+        },
+        {
+            title: "TailwindCSS",
+            ImgTech: tailwind,
         },
     ];
     const row3: ItemProops[] = [
@@ -107,41 +107,41 @@ export default function TechStack() {
             <h3
                 data-aos="fade-right"
                 data-aos-duration="500"
-                className="text-surface-50 font-glancyr font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] pt-20 pb-2">
+                className="text-surface-50 font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] pt-20 pb-2">
                 We have used <span className="text-oranges-300">30+ </span>programming langguages, frameworks, and digital tools{" "}
             </h3>
             <div className="space-y-4">
-                <Marquee direction="right" speed={50}  gradient={true} gradientColor="black" gradientWidth={60}>
-                    <div data-aos="fade-up" data-aos-duration="500" className="mt-8 lg:mx-auto">
-                        <div className=" items-center flex gap-6">
-                            {[...row1, ...row1].map((item, i) => (
+                <Marquee direction="right" speed={50} gradient={true} gradientColor="black" gradientWidth={60} loop={0}>
+                    <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
+                        <div className="items-center flex space-x-6">
+                            {[...row1].map((item, i) => (
                                 <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
                             ))}
                         </div>
                     </div>
                 </Marquee>
-                <Marquee direction="left" speed={50}  gradient={true} gradientColor="black" gradientWidth={60}>
+                <Marquee direction="left" speed={50} gradient={true} gradientColor="black" gradientWidth={60} loop={0}>
                     <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
-                        <div className="items-center flex gap-6">
-                            {[...row2, ...row2].map((item, i) => (
+                        <div className="items-center flex space-x-6">
+                            {[...row2].map((item, i) => (
                                 <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
                             ))}
                         </div>
                     </div>
                 </Marquee>
-                <Marquee direction="right" speed={50}  gradient={true} gradientColor="black" gradientWidth={60}>
+                <Marquee direction="right" speed={50} gradient={true} gradientColor="black" gradientWidth={60} loop={0}>
                     <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
-                        <div className="items-center flex gap-6">
-                            {[...row3, ...row3].map((item, i) => (
+                        <div className="items-center flex space-x-6">
+                            {[...row3].map((item, i) => (
                                 <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
                             ))}
                         </div>
                     </div>
                 </Marquee>
-                <Marquee direction="left" speed={50}  gradient={true} gradientColor="black" gradientWidth={60}>
+                <Marquee direction="left" speed={50} gradient={true} gradientColor="black" gradientWidth={60} loop={0}>
                     <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
-                        <div className="items-center flex gap-6">
-                            {[...row4, ...row4].map((item, i) => (
+                        <div className="items-center flex space-x-5">
+                            {[...row4].map((item, i) => (
                                 <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
                             ))}
                         </div>
