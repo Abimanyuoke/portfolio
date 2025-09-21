@@ -21,84 +21,84 @@ import { StaticImageData } from "next/image";
 
 interface ItemProops {
     title: string;
-    IMGUrl: StaticImageData;
+    ImgTech: StaticImageData;
 }
 
 export default function TechStack() {
     const row1: ItemProops[] = [
         {
             title: "HTML",
-            IMGUrl: html,
+            ImgTech: html,
         },
         {
             title: "CSS",
-            IMGUrl: css,
+            ImgTech: css,
         },
         {
             title: "JavaScript",
-            IMGUrl: js,
+            ImgTech: js,
         },
         {
             title: "Node.js",
-            IMGUrl: nodejs,
+            ImgTech: nodejs,
         },
         {
             title: "TypeScript",
-            IMGUrl: ts,
+            ImgTech: ts,
         },
         {
             title: "TailwindCSS",
-            IMGUrl: tailwind,
+            ImgTech: tailwind,
         },
     ];
     const row2: ItemProops[] = [
         {
             title: "Next.js",
-            IMGUrl: nextjs,
+            ImgTech: nextjs,
         },
         {
             title: "React.js",
-            IMGUrl: react,
+            ImgTech: react,
         },
         {
             title: "Figma",
-            IMGUrl: figma,
+            ImgTech: figma,
         },
     ];
     const row3: ItemProops[] = [
         {
             title: "Firebase",
-            IMGUrl: firebase,
+            ImgTech: firebase,
         },
         {
             title: "MongoDB",
-            IMGUrl: mongodb,
+            ImgTech: mongodb,
         },
         {
             title: "VSCode",
-            IMGUrl: vscode,
+            ImgTech: vscode,
         },
         {
             title: "Github",
-            IMGUrl: github,
+            ImgTech: github,
         },
         {
             title: "Git",
-            IMGUrl: git,
+            ImgTech: git,
         },
     ];
     const row4: ItemProops[] = [
         {
             title: "Python",
-            IMGUrl: python,
+            ImgTech: python,
         },
         {
             title: "Adobe_Photoshop",
-            IMGUrl: photoshop,
+            ImgTech: photoshop,
         },
         {
             title: "JavaScript",
-            IMGUrl: js,
+            ImgTech: js,
         },
     ];
 
@@ -112,37 +112,37 @@ export default function TechStack() {
             </h3>
             <div className="space-y-4">
                 <Marquee direction="right" speed={50}  gradient={true} gradientColor="black" gradientWidth={60}>
-                    <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-right mt-8 lg:mx-auto">
-                        <div className="marquee-content flex gap-6">
+                    <div data-aos="fade-up" data-aos-duration="500" className="mt-8 lg:mx-auto">
+                        <div className=" items-center flex gap-6">
                             {[...row1, ...row1].map((item, i) => (
-                                <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                                <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
                             ))}
                         </div>
                     </div>
                 </Marquee>
                 <Marquee direction="left" speed={50}  gradient={true} gradientColor="black" gradientWidth={60}>
-                    <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-left mx-auto">
-                        <div className="marquee-content flex gap-6">
+                    <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
+                        <div className="items-center flex gap-6">
                             {[...row2, ...row2].map((item, i) => (
-                                <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                                <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
                             ))}
                         </div>
                     </div>
                 </Marquee>
                 <Marquee direction="right" speed={50}  gradient={true} gradientColor="black" gradientWidth={60}>
-                    <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-right lg:mx-auto">
-                        <div className="marquee-content flex gap-6">
+                    <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
+                        <div className="items-center flex gap-6">
                             {[...row3, ...row3].map((item, i) => (
-                                <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                                <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
                             ))}
                         </div>
                     </div>
                 </Marquee>
                 <Marquee direction="left" speed={50}  gradient={true} gradientColor="black" gradientWidth={60}>
-                    <div data-aos="fade-up" data-aos-duration="500" className="marquee-row marquee-left mx-auto">
-                        <div className="marquee-content flex gap-6">
+                    <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
+                        <div className="items-center flex gap-6">
                             {[...row4, ...row4].map((item, i) => (
-                                <TechItem key={i} title={item.title} IMGUrl={item.IMGUrl} />
+                                <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
                             ))}
                         </div>
                     </div>
