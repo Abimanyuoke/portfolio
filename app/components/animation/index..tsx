@@ -123,11 +123,11 @@ export default function TechStack() {
     ];
 
     return (
-        <div className="pb-20">
+        <div className="pb-20 bg-white dark:bg-black">
             <h3
                 data-aos="fade-right"
                 data-aos-duration="500"
-                className="text-surface-50 font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] pt-20 pb-2">
+                className="text-surface-50 dark:text-white font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] pt-20 pb-2">
                 We have used <span className="text-oranges-300">30+ </span>programming langguages, frameworks, and digital tools{" "}
             </h3>
             <div className="space-y-4">

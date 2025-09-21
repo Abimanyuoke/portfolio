@@ -1,27 +1,28 @@
-@import "tailwindcss";
+  @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-}
+  :root {
+    --background: #ffffff;
+  }
 
-@theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  @theme inline {
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+  }
 
-/* body {
-  @apply bg-black text-white relative font-sans h-screen overflow-x-hidden;
-} */
+  /* body {
+    @apply bg-black text-white relative font-sans h-screen overflow-x-hidden;
+  } */
 
-html {
-  @apply scroll-smooth;
-}
+  html {
+    @apply scroll-smooth;
+  }
 
-.dark {
-  --background: #000000;
-}
+  .dark {
+    --background: #000000;
+  }
 
 body {
   @apply bg-[var(--background)] transition-colors duration-500;
 }
+
 
