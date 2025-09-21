@@ -15,6 +15,10 @@ import github from "@/public/techStack/github.svg";
 import git from "@/public/techStack/git.svg";
 import python from "@/public/techStack/python.svg";
 import photoshop from "@/public/techStack/ps.svg";
+import postgreSQL from "@/public/techStack/postgresql.svg";
+import bootstrap from "@/public/techStack/bootstrap.svg";
+import vue from "@/public/techStack/vue.svg";
+import prisma from "@/public/techStack/prisma.svg";
 import TechItem from "./TechItem";
 import Marquee from "react-fast-marquee";
 import { StaticImageData } from "next/image";
@@ -46,6 +50,10 @@ export default function TechStack() {
             title: "TypeScript",
             ImgTech: ts,
         },
+        {
+            title: "Vue.js",
+            ImgTech: vue,
+        }
     ];
     const row2: ItemProops[] = [
         {
@@ -64,6 +72,10 @@ export default function TechStack() {
             title: "TailwindCSS",
             ImgTech: tailwind,
         },
+        {
+            title: "Prisma",
+            ImgTech: prisma,
+        }
     ];
     const row3: ItemProops[] = [
         {
@@ -99,6 +111,14 @@ export default function TechStack() {
         {
             title: "JavaScript",
             ImgTech: js,
+        },
+        {
+            title: "PostgreSQL",
+            ImgTech: postgreSQL,
+        },
+        {
+            title: "Bootstrap",
+            ImgTech: bootstrap,
         },
     ];
 
