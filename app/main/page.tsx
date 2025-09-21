@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/navbar";
-import AnimationLanguages from "../components/animation/index.";
+import AnimationLanguages from "../components/animation";
 import Hero from "../components/hero";
 
 export default function Main() {
