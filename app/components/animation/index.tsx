@@ -1,7 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+import React from "react";
 import html from "@/public/techStack/html.svg";
 import css from "@/public/techStack/css.svg";
 import js from "@/public/techStack/js.svg";
@@ -9,6 +8,7 @@ import nodejs from "@/public/techStack/nodejs.svg";
 import ts from "@/public/techStack/typescript.svg";
 import tailwind from "@/public/techStack/tailwindcss.svg";
 import nextjs from "@/public/techStack/nextjs2.svg";
+import mySQL from "@/public/techStack/mysql.svg";
 import react from "@/public/techStack/reactjs.svg";
 import figma from "@/public/techStack/figma.svg";
 import firebase from "@/public/techStack/firebase.svg";
@@ -44,16 +44,16 @@ export default function TechStack() {
         { title: "Figma", ImgTech: figma },
         { title: "TailwindCSS", ImgTech: tailwind },
         { title: "Prisma", ImgTech: prisma },
-        { title: "Supabase", ImgTech: supabase },
     ];
 
     const row2: ItemProops[] = [
         { title: "Next.js", ImgTech: nextjs },
         { title: "React.js", ImgTech: react },
-        { title: "Figma", ImgTech: figma },
-        { title: "TailwindCSS", ImgTech: tailwind },
-        { title: "Prisma", ImgTech: prisma },
+        { title: "Node.js", ImgTech: nodejs },
+        { title: "Typescript", ImgTech: ts },
         { title: "Supabase", ImgTech: supabase },
+        { title: "Vue.js", ImgTech: vue },
+
     ];
 
     const row3: ItemProops[] = [
@@ -68,10 +68,10 @@ export default function TechStack() {
     const row4: ItemProops[] = [
         { title: "Python", ImgTech: python },
         { title: "Adobe_Photoshop", ImgTech: photoshop },
-        { title: "JavaScript", ImgTech: js },
         { title: "PostgreSQL", ImgTech: postgreSQL },
         { title: "Bootstrap", ImgTech: bootstrap },
         { title: "Vite.js", ImgTech: vite },
+        { title: "MySQL", ImgTech: mySQL },
     ];
 
     return (
