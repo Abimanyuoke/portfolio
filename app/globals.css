@@ -120,3 +120,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+}

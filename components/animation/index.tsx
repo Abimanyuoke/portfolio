@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import html from "@/public/techStack/html.svg";
 import css from "@/public/techStack/css.svg";
@@ -32,131 +32,47 @@ interface ItemProops {
 }
 
 export default function TechStack() {
-    const { theme } = useTheme();
-    const [mounted, setMounted] = React.useState(false);
 
-    React.useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    // Determine gradient color based on theme
-    const gradientColor = mounted && theme === 'dark' ? 'black' : 'white';
-
-    // Show loading state to prevent hydration mismatch
-    if (!mounted) {
-        return (
-            <div className="pb-20 bg-white dark:bg-black">
-                <h3 className="text-surface-50 dark:text-white font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] pt-20 pb-2">
-                    We have used <span className="text-[#ffc95b]">30+ </span>programming langguages, frameworks, and digital tools{" "}
-                </h3>
-                <div className="animate-pulse">Loading tech stack...</div>
-            </div>
-        );
-    }
-
-    const row1: ItemProops[] = [
-        {
-            title: "HTML",
-            ImgTech: html,
-        },
-        {
-            title: "CSS",
-            ImgTech: css,
-        },
-        {
-            title: "JavaScript",
-            ImgTech: js,
-        },
-        {
-            title: "Node.js",
-            ImgTech: nodejs,
-        },
-        {
-            title: "TypeScript",
-            ImgTech: ts,
-        },
-        {
-            title: "Vue.js",
-            ImgTech: vue,
-        }
+ const row1: ItemProops[] = [
+        { title: "HTML", ImgTech: html },
+        { title: "CSS", ImgTech: css },
+        { title: "JavaScript", ImgTech: js },
+        { title: "Node.js", ImgTech: nodejs },
+        { title: "TypeScript", ImgTech: ts },
+        { title: "Vue.js", ImgTech: vue },
     ];
     const row2: ItemProops[] = [
-        {
-            title: "Next.js",
-            ImgTech: nextjs,
-        },
-        {
-            title: "React.js",
-            ImgTech: react,
-        },
-        {
-            title: "Figma",
-            ImgTech: figma,
-        },
-        {
-            title: "TailwindCSS",
-            ImgTech: tailwind,
-        },
-        {
-            title: "Prisma",
-            ImgTech: prisma,
-        }
+        { title: "Next.js", ImgTech: nextjs },
+        { title: "React.js", ImgTech: react },
+        { title: "Figma", ImgTech: figma },
+        { title: "TailwindCSS", ImgTech: tailwind },
+        { title: "Prisma", ImgTech: prisma },
     ];
     const row3: ItemProops[] = [
-        {
-            title: "Firebase",
-            ImgTech: firebase,
-        },
-        {
-            title: "MongoDB",
-            ImgTech: mongodb,
-        },
-        {
-            title: "VSCode",
-            ImgTech: vscode,
-        },
-        {
-            title: "Github",
-            ImgTech: github,
-        },
-        {
-            title: "Git",
-            ImgTech: git,
-        },
+        { title: "Firebase", ImgTech: firebase },
+        { title: "MongoDB", ImgTech: mongodb },
+        { title: "VSCode", ImgTech: vscode },
+        { title: "Github", ImgTech: github },
+        { title: "Git", ImgTech: git },
     ];
     const row4: ItemProops[] = [
-        {
-            title: "Python",
-            ImgTech: python,
-        },
-        {
-            title: "Adobe_Photoshop",
-            ImgTech: photoshop,
-        },
-        {
-            title: "JavaScript",
-            ImgTech: js,
-        },
-        {
-            title: "PostgreSQL",
-            ImgTech: postgreSQL,
-        },
-        {
-            title: "Bootstrap",
-            ImgTech: bootstrap,
-        },
+        { title: "Python", ImgTech: python },
+        { title: "Adobe_Photoshop", ImgTech: photoshop },
+        { title: "JavaScript", ImgTech: js },
+        { title: "PostgreSQL", ImgTech: postgreSQL },
+        { title: "Bootstrap", ImgTech: bootstrap },
     ];
 
     return (
-        <div className="pb-20 bg-white dark:bg-black">
+        <div className="pb-20">
             <h3
                 data-aos="fade-right"
                 data-aos-duration="500"
-                className="text-surface-50 dark:text-white font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] pt-20 pb-2">
+                className="text-surface-50 dark:text-white font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] py-20">
                 We have used <span className="text-[#ffc95b]">30+ </span>programming langguages, frameworks, and digital tools{" "}
             </h3>
             <div className="space-y-4">
-                <Marquee direction="right" speed={50} gradient={true} gradientColor={gradientColor} gradientWidth={60} loop={0}>
+                <Marquee direction="right" speed={50} loop={0}>
                     <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
                         <div className="items-center flex space-x-6">
                             {[...row1].map((item, i) => (
@@ -165,7 +81,7 @@ export default function TechStack() {
                         </div>
                     </div>
                 </Marquee>
-                <Marquee direction="left" speed={50} gradient={true} gradientColor={gradientColor} gradientWidth={60} loop={0}>
+                <Marquee direction="left" speed={50} loop={0}>
                     <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
                         <div className="items-center flex space-x-6">
                             {[...row2].map((item, i) => (
@@ -174,7 +90,7 @@ export default function TechStack() {
                         </div>
                     </div>
                 </Marquee>
-                <Marquee direction="right" speed={50} gradient={true} gradientColor={gradientColor} gradientWidth={60} loop={0}>
+                <Marquee direction="right" speed={50}  loop={0}>
                     <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
                         <div className="items-center flex space-x-6">
                             {[...row3].map((item, i) => (
@@ -183,7 +99,7 @@ export default function TechStack() {
                         </div>
                     </div>
                 </Marquee>
-                <Marquee direction="left" speed={50} gradient={true} gradientColor={gradientColor} gradientWidth={60} loop={0}>
+                <Marquee direction="left" speed={50} loop={0}>
                     <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
                         <div className="items-center flex space-x-5">
                             {[...row4].map((item, i) => (
@@ -196,3 +112,5 @@ export default function TechStack() {
         </div>
     );
 }
+
+
