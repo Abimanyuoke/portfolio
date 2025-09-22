@@ -86,7 +86,7 @@ export default function TechStack() {
                     </h3>
                 </div>
                 <div className="space-y-4">
-                    <Marquee direction="right" speed={50} gradient={true} gradientColor="black" gradientWidth={60} loop={0}>
+                    <Marquee direction="right" speed={50} loop={0}>
                         <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
                             <div className="items-center flex space-x-6">
                                 {[...row1].map((item, i) => (
@@ -95,7 +95,7 @@ export default function TechStack() {
                             </div>
                         </div>
                     </Marquee>
-                    <Marquee direction="left" speed={50} gradient={true} gradientColor="black" gradientWidth={60} loop={0}>
+                    <Marquee direction="left" speed={50} loop={0}>
                         <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
                             <div className="items-center flex space-x-6">
                                 {[...row2].map((item, i) => (
@@ -104,7 +104,7 @@ export default function TechStack() {
                             </div>
                         </div>
                     </Marquee>
-                    <Marquee direction="right" speed={50} gradient={true} gradientColor="black" gradientWidth={60} loop={0}>
+                    <Marquee direction="right" speed={50} loop={0}>
                         <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
                             <div className="items-center flex space-x-6">
                                 {[...row3].map((item, i) => (
@@ -113,7 +113,7 @@ export default function TechStack() {
                             </div>
                         </div>
                     </Marquee>
-                    <Marquee direction="left" speed={50} gradient={true} gradientColor="black" gradientWidth={60} loop={0}>
+                    <Marquee direction="left" speed={50} loop={0}>
                         <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
                             <div className="items-center flex space-x-5">
                                 {[...row4].map((item, i) => (
