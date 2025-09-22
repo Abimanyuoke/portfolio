@@ -123,7 +123,7 @@ export default function TechStack() {
     ];
 
     return (
-        <div className="pb-20 bg-white dark:bg-black">
+        <div className="pb-20">
             <h3
                 data-aos="fade-right"
                 data-aos-duration="500"
