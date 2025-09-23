@@ -4,7 +4,7 @@ import React from "react";
 import Navbar from "./components/navbar";
 import AnimationLanguages from "./components/animation";
 import Hero from "./components/hero";
-// import Projects from "./components/projects";
+import Projects from "./components/projects";
 
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
         <Hero />
       </div>
       <AnimationLanguages />
-      {/* <Projects /> */}
+      <Projects />
     </div>
   );
 }
