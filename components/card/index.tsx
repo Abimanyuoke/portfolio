@@ -25,13 +25,13 @@ export default function Card({
     return (
         <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 ${className}`}>
             {/* Project Image */}
-            <div className="relative h-48 overflow-hidden">
+            <div className="relative overflow-hidden">
                 <img
                     src={image}
                     alt={title}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent bg-opacity-20 transition-all duration-300"></div>
             </div>
 
             {/* Card Content */}
@@ -42,15 +42,16 @@ export default function Card({
                 </h3>
 
                 {/* Project Description */}
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
                     {description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-4">
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 mb-6">
                     {technologies.map((tech, index) => (
                         <span
                             key={index}
-                            className="px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300 rounded-full">
+                            className="px-4 py-1.5 text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300 rounded-full">
                             {tech}
                         </span>
                     ))}
@@ -59,22 +60,22 @@ export default function Card({
                 {/* Action Buttons */}
                 <div className="flex gap-3">
                     {githubUrl && (
-                        <Link
+                        <a
                             href={githubUrl}
                             target="_blank"
                             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200">
                             <Github size={16} />
                             Code
-                        </Link>
+                        </a>
                     )}
                     {liveUrl && (
-                        <Link
+                        <a
                             href={liveUrl}
                             target="_blank"
                             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors duration-200">
                             <ExternalLink size={16} />
                             Live Demo
-                        </Link>
+                        </a>
                     )}
                 </div>
             </div>
