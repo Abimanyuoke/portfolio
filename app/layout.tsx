@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import { ThemeProvider } from "../components/theme-provider"
 import "./globals.css"
 
@@ -10,6 +11,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className="overflow-x-hidden">
+        <Navbar />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
