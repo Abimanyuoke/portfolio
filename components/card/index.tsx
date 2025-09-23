@@ -1,7 +1,8 @@
 "use client"
 
 import React from "react";
-import { Github, ExternalLink, Link } from "lucide-react";
+import Link from "next/link";
+import { Github, ExternalLink } from "lucide-react";
 
 interface ProjectCardProps {
     title: string;
@@ -23,13 +24,13 @@ export default function Card({
     className = ""
 }: ProjectCardProps) {
     return (
-        <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 ${className}`}>
+        <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer ${className}`}>
             {/* Project Image */}
             <div className="relative overflow-hidden">
                 <img
                     src={image}
                     alt={title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-300 "
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent bg-opacity-20 transition-all duration-300"></div>
             </div>
@@ -60,22 +61,22 @@ export default function Card({
                 {/* Action Buttons */}
                 <div className="flex gap-3">
                     {githubUrl && (
-                        <a
+                        <Link
                             href={githubUrl}
                             target="_blank"
                             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200">
                             <Github size={16} />
                             Code
-                        </a>
+                        </Link>
                     )}
                     {liveUrl && (
-                        <a
+                        <Link
                             href={liveUrl}
                             target="_blank"
                             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors duration-200">
                             <ExternalLink size={16} />
                             Live Demo
-                        </a>
+                        </Link>
                     )}
                 </div>
             </div>

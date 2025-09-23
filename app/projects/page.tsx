@@ -114,9 +114,8 @@ export default function ProjectSearch({ onClose }: ProjectSearchProps) {
                                 onClick={clearSearch}
                                 className="absolute inset-y-0 right-0 pr-3 flex items-center"
                                 aria-label="Clear search"
-                                title="Clear search"
-                            >
-                                <X className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                                title="Clear search">
+                                <X className="h-5 w-5 text-gray-400 hover:text-gray-600 cursor-pointer" />
                             </button>
                         )}
                     </div>
@@ -132,8 +131,7 @@ export default function ProjectSearch({ onClose }: ProjectSearchProps) {
                                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${selectedCategory === category
                                     ? "bg-orange-500 text-white"
                                     : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-                                    }`}
-                            >
+                                    }`}>
                                 {category.charAt(0).toUpperCase() + category.slice(1)}
                                 {category === "all" && " Projects"}
                             </button>
@@ -199,8 +197,7 @@ export default function ProjectSearch({ onClose }: ProjectSearchProps) {
                                 </p>
                                 <button
                                     onClick={clearSearch}
-                                    className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-200"
-                                >
+                                    className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-200">
                                     Clear Search
                                 </button>
                             </div>
