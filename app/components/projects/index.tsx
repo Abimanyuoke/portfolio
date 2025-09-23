@@ -18,17 +18,7 @@ export default function Projects() {
 
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                {projectsData.map((project) => (
-                    <Card
-                        key={project.id}
-                        title={project.title}
-                        description={project.description}
-                        image={project.image}
-                        technologies={project.technologies}
-                        githubUrl={project.githubUrl}
-                        liveUrl={project.liveUrl}
-                    />
-                ))}
+                <Card title={"Abim Project"} description={"dsadnafnafnaaionfionifawiofnanfkaslflafnwaonia"} image={"mdasdmadma"} technologies={[]}/>
             </div>
 
             {/* View More Button */}

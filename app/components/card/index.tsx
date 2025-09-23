@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Link } from "lucide-react";
 
 interface ProjectCardProps {
     title: string;
@@ -46,13 +46,11 @@ export default function Card({
                     {description}
                 </p>
 
-                {/* Technologies */}
                 <div className="flex flex-wrap gap-2 mb-4">
                     {technologies.map((tech, index) => (
                         <span
                             key={index}
-                            className="px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300 rounded-full"
-                        >
+                            className="px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300 rounded-full">
                             {tech}
                         </span>
                     ))}
@@ -61,26 +59,22 @@ export default function Card({
                 {/* Action Buttons */}
                 <div className="flex gap-3">
                     {githubUrl && (
-                        <a
+                        <Link
                             href={githubUrl}
                             target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
-                        >
+                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200">
                             <Github size={16} />
                             Code
-                        </a>
+                        </Link>
                     )}
                     {liveUrl && (
-                        <a
+                        <Link
                             href={liveUrl}
                             target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors duration-200"
-                        >
+                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors duration-200">
                             <ExternalLink size={16} />
                             Live Demo
-                        </a>
+                        </Link>
                     )}
                 </div>
             </div>
