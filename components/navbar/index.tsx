@@ -1,23 +1,20 @@
 "use client";
 
 import React from "react";
-import DarkMode from "../darkmode";
-// import { DarkModeToggle } from "../darkmode";
-// import { SimpleDarkModeToggle } from "../darkmode/simple-toggle";
-
+import DarkMode from "../darkMode";
 
 export default function Navbar() {
     return (
-        <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 lg:px-20 z-[99999]" style={{ position: "relative", overflow: "visible" }}>
-            <h1 className="text-3xl md:text-2xl lg:text-3xl font-light m-0 text-black dark:text-white">ABICODE</h1>
-            <nav className="hidden md:flex items-center gap-12 font-light text-black  dark:text-white">
+        <header className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 lg:px-20 text-black" style={{ position: "relative", overflow: "visible" }}>
+            <h1 className="text-3xl md:text-2xl lg:text-3xl font-light m-0 dark:text-white">ABICODE</h1>
+            <nav className="hidden md:flex items-center gap-12 font-light  dark:text-white">
                 <a href="#" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50 uppercase">Home</a>
                 <a href="#" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50 uppercase">Blog</a>
                 <a href="#" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50 uppercase">Works</a>
                 <a href="#" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50 uppercase">About</a>
             </nav>
 
-            <DarkMode />
-        </div>
+            <DarkMode/>
+        </header>
     );
 }
