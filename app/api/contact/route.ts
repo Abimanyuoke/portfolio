@@ -27,92 +27,93 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Option 1: Using Nodemailer (uncomment and configure)
-        /*
+        // Option 1: Using Nodemailer with Gmail
         const nodemailer = require('nodemailer');
-        
+
+        // Debug environment variables
+        console.log('Email User:', process.env.EMAIL_USER);
+        console.log('Email Pass exists:', !!process.env.EMAIL_PASS);
+
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            console.error('❌ Missing email configuration');
+            return NextResponse.json(
+                { error: 'Email configuration not found' },
+                { status: 500 }
+            );
+        }
+
         const transporter = nodemailer.createTransporter({
             service: 'gmail',
             auth: {
-                user: process.env.EMAIL_USER, // your-email@gmail.com
-                pass: process.env.EMAIL_PASS, // app password
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
             },
         });
+
+        // Test connection
+        try {
+            await transporter.verify();
+            console.log('✅ Email transporter verified successfully');
+        } catch (verifyError) {
+            console.error('❌ Email transporter verification failed:', verifyError);
+            return NextResponse.json(
+                { error: 'Email service connection failed' },
+                { status: 500 }
+            );
+        }
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER, // your email to receive messages
-            subject: `New Contact Form Message from ${name}`,
+            subject: `📧 New Contact Form Message from ${name}`,
             html: `
-                <h2>New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Message:</strong></p>
-                <p>${message.replace(/\n/g, '<br>')}</p>
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+                    <h2 style="color: #333; border-bottom: 2px solid #f97316; padding-bottom: 10px;">
+                        🚀 New Contact Form Submission
+                    </h2>
+                    <div style="margin: 20px 0;">
+                        <p style="margin: 10px 0;"><strong style="color: #f97316;">👤 Name:</strong> ${name}</p>
+                        <p style="margin: 10px 0;"><strong style="color: #f97316;">📧 Email:</strong> ${email}</p>
+                        <p style="margin: 10px 0;"><strong style="color: #f97316;">💬 Message:</strong></p>
+                        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; border-left: 4px solid #f97316;">
+                            ${message.replace(/\n/g, '<br>')}
+                        </div>
+                    </div>
+                    <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;">
+                    <p style="font-size: 12px; color: #666; text-align: center;">
+                        This message was sent from your portfolio contact form
+                    </p>
+                </div>
             `,
             replyTo: email,
         };
 
-        await transporter.sendMail(mailOptions);
-        */
+        try {
+            const result = await transporter.sendMail(mailOptions);
+            console.log('✅ Email sent successfully to:', process.env.EMAIL_USER);
+            console.log('Email result:', result.messageId);
 
-        // Option 2: Using Resend (recommended)
-        /*
-        const { Resend } = require('resend');
-        const resend = new Resend(process.env.RESEND_API_KEY);
-
-        await resend.emails.send({
-            from: 'contact@yourdomain.com',
-            to: 'your-email@gmail.com',
-            subject: `New Contact Form Message from ${name}`,
-            html: `
-                <h2>New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Message:</strong></p>
-                <p>${message.replace(/\n/g, '<br>')}</p>
-            `,
-            reply_to: email,
-        });
-        */
-
-        // Option 3: Using SendGrid
-        /*
-        const sgMail = require('@sendgrid/mail');
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-        const msg = {
-            to: 'your-email@gmail.com',
-            from: 'contact@yourdomain.com', // verified sender
-            subject: `New Contact Form Message from ${name}`,
-            html: `
-                <h2>New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Message:</strong></p>
-                <p>${message.replace(/\n/g, '<br>')}</p>
-            `,
-            reply_to: email,
-        };
-
-        await sgMail.send(msg);
-        */
-
-        // For now, just log the message (replace with actual email sending)
-        console.log('Contact form submission:', { name, email, message });
-
-        // Simulate email sending delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        return NextResponse.json(
-            { message: 'Message sent successfully!' },
-            { status: 200 }
-        );
+            return NextResponse.json(
+                {
+                    message: 'Message sent successfully!',
+                    messageId: result.messageId
+                },
+                { status: 200 }
+            );
+        } catch (emailError) {
+            console.error('❌ Failed to send email:', emailError);
+            const errorMessage = emailError instanceof Error ? emailError.message : 'Unknown email error';
+            return NextResponse.json(
+                { error: `Email sending failed: ${errorMessage}` },
+                { status: 500 }
+            );
+        }
 
     } catch (error) {
-        console.error('Error sending email:', error);
+        console.error('❌ General error:', error);
+        const errorMessage = error instanceof Error ? error.message : 'Unknown server error';
         return NextResponse.json(
-            { error: 'Failed to send message' },
+            { error: `Server error: ${errorMessage}` },
             { status: 500 }
         );
     }

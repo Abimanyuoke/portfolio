@@ -157,7 +157,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <p className="font-medium text-gray-900 dark:text-white">Email</p>
-                                        <p className="text-gray-600 dark:text-gray-300">your-email@gmail.com</p>
+                                        <p className="text-gray-600 dark:text-gray-300">abimanyusuryaputra0@gmail.com</p>
                                     </div>
                                 </div>
 
@@ -282,10 +282,10 @@ export default function Contact() {
                             {/* Status Message */}
                             {status.type !== 'idle' && (
                                 <div className={`p-4 rounded-lg flex items-center space-x-3 ${status.type === 'success'
-                                        ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300'
-                                        : status.type === 'error'
-                                            ? 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300'
-                                            : 'bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300'
+                                    ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300'
+                                    : status.type === 'error'
+                                        ? 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300'
+                                        : 'bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300'
                                     }`}>
                                     {status.type === 'success' && <CheckCircle className="h-5 w-5 flex-shrink-0" />}
                                     {status.type === 'error' && <AlertCircle className="h-5 w-5 flex-shrink-0" />}
@@ -303,15 +303,15 @@ export default function Contact() {
                                 className="w-full flex items-center justify-center space-x-3 py-3 px-6 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                             >
                                 {status.type === 'loading' ? (
-                                    <>
+                                    <div>
                                         <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                                         <span>Sending...</span>
-                                    </>
+                                    </div>
                                 ) : (
-                                    <>
-                                        <Send className="h-5 w-5" />
+                                    <div className="flex gap-2 items-center">
                                         <span>Send Message</span>
-                                    </>
+                                        <Send className="h-5 w-5" />
+                                    </div>
                                 )}
                             </button>
                         </form>
