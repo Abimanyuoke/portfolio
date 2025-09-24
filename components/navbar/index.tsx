@@ -10,8 +10,8 @@ export default function Navbar() {
             <nav className="hidden md:flex items-center gap-12 font-light  dark:text-white">
                 <a href="/" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50 uppercase">Home</a>
                 <a href="/projects" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50 uppercase">Projects</a>
-                <a href="/contact" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50 uppercase">Contact</a>
-                <a href="#" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50 uppercase">About</a>
+                <a href="#contact" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50 uppercase">Contact</a>
+                <a href="/about" className="text-base tracking-wider transition-colors hover:text-gray-300 z-50 uppercase">About</a>
             </nav>
 
             <DarkMode />
