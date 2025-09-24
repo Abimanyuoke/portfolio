@@ -82,7 +82,7 @@ export default function TechStack() {
                         data-aos="fade-right"
                         data-aos-duration="500"
                         className="text-surface-50 font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] py-20">
-                        We have used <span className="text-[#ffc95b]">30+ </span>programming langguages, frameworks, and digital tools{" "}
+                        I have used <span className="text-[#ffc95b]">30+ </span>programming langguages, frameworks, and digital tools{" "}
                     </h3>
                 </div>
                 <div className="space-y-4">
