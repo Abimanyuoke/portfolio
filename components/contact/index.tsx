@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Mail, User, MessageSquare, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { toast, Toaster } from 'sonner';
 
 interface FormData {
     name: string;
@@ -89,7 +90,7 @@ export default function Contact() {
             );
             */
 
-            // Option 2: Using your own API endpoint
+            // Using your own API endpoint
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
@@ -98,13 +99,31 @@ export default function Contact() {
                 body: JSON.stringify(formData),
             });
 
-            if (!response.ok) {
-                throw new Error('Failed to send message');
+            let responseData;
+            try {
+                responseData = await response.json();
+            } catch (parseError) {
+                console.error('Failed to parse response:', parseError);
+                throw new Error(`Server responded with status ${response.status} but response was not valid JSON`);
             }
 
+            if (!response.ok) {
+                console.error('API Error Status:', response.status);
+                console.error('API Error Data:', responseData);
+                const errorMessage = responseData?.error || `HTTP ${response.status}: Failed to send message`;
+                throw new Error(errorMessage);
+            }
+
+            // Success
             setStatus({
                 type: 'success',
                 message: 'Message sent successfully! I\'ll get back to you soon.'
+            });
+
+            // Show success toast
+            toast.success('Message sent successfully! 🎉', {
+                description: 'Thank you for your message. I\'ll get back to you soon!',
+                duration: 5000,
             });
 
             // Reset form
@@ -112,9 +131,17 @@ export default function Contact() {
 
         } catch (error) {
             console.error('Error sending message:', error);
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+
             setStatus({
                 type: 'error',
-                message: 'Failed to send message. Please try again or contact me directly.'
+                message: errorMessage
+            });
+
+            // Show error toast
+            toast.error('Failed to send message 😞', {
+                description: errorMessage,
+                duration: 7000,
             });
         }
     };
@@ -318,6 +345,12 @@ export default function Contact() {
                     </div>
                 </div>
             </div>
+            <Toaster
+                position="top-right"
+                richColors
+                closeButton
+                expand={true}
+            />
         </section>
     );
 }
