@@ -8,7 +8,7 @@ import Spline from '@splinetool/react-spline';
 export default function Hero() {
     return (
         <main className="flex lg:mt-20 flex-col lg:flex-row items-center justify-between min-h-[calc(90vh-6rem)]">
-            <div className="max-w-xl ml-[5%] z-10 mt-[90%] md:mt-[60%] lg:mt-0">
+            <div className="max-w-xl ml-[5%] z-10 mt-[90%] md:mt-[60%] lg:mt-0 sm:order-2 lg:order-1 ">
                 <div className="relative w-[95%] sm:w-48 h-10 bg-gradient-to-r from-[#656565] to-[#e99b63] shadow-[0_0_15px_rgba(225,225,225,0.4)] rounded-full">
                     <div className="absolute inset-[3px] text-white bg-black rounded-full flex items-center justify-center gap-1">
                         <i className='bx bx-diamond'></i>
@@ -32,9 +32,8 @@ export default function Hero() {
                     </a>
                 </div>
             </div>
-
-                <Spline className="absolute lg:top-0 top-[20%] bottom-0 lg:left-[25%] sm:left-[2%] h-full"
-                    scene="https://prod.spline.design/JRb3pk7gNTZo7Nsp/scene.splinecode"/>
+                <Spline className="absolute top-[-20%] lg:top-0 bottom-0 lg:left-[25%] sm:left-[2%] h-full"
+                    scene="https://prod.spline.design/JRb3pk7gNTZo7Nsp/scene.splinecode" />
         </main>
     )
 }

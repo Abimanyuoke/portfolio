@@ -77,7 +77,7 @@ export default function TechStack() {
     return (
         <div>
             <div className="pb-20">
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl mx-auto px-4">
                     <h3
                         data-aos="fade-right"
                         data-aos-duration="500"
@@ -90,7 +90,7 @@ export default function TechStack() {
                         <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
                             <div className="items-center flex space-x-6">
                                 {[...row1].map((item, i) => (
-                                    <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
+                                    <TechItem key={i} title={item.title} ImgTech={item.ImgTech}/>
                                 ))}
                             </div>
                         </div>
