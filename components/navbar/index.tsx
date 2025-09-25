@@ -54,10 +54,9 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${isScrolled
-                    ? 'backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-lg border-b border-gray-200/20 dark:border-gray-700/20'
+                    ? 'backdrop-blur-md bg-white/40 dark:bg-gray-900/40 shadow-lg border-b border-gray-200/20 dark:border-gray-700/20'
                     : 'bg-transparent'
-                }`}
-        >
+                }`}>
             <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 lg:px-20">
                 {/* Logo */}
                 <h1 className={`text-3xl md:text-2xl lg:text-3xl font-light m-0 transition-colors duration-300 ${isScrolled
@@ -74,8 +73,7 @@ export default function Navbar() {
                         className={`text-base tracking-wider transition-all duration-300 hover:text-orange-500 dark:hover:text-orange-400 uppercase relative group ${isScrolled
                                 ? 'text-gray-700 dark:text-gray-200'
                                 : 'text-black dark:text-white'
-                            }`}
-                    >
+                            }`}>
                         Home
                         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
                     </a>
@@ -84,8 +82,7 @@ export default function Navbar() {
                         className={`text-base tracking-wider transition-all duration-300 hover:text-orange-500 dark:hover:text-orange-400 uppercase relative group ${isScrolled
                                 ? 'text-gray-700 dark:text-gray-200'
                                 : 'text-black dark:text-white'
-                            }`}
-                    >
+                            }`}>
                         Projects
                         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
                     </a>
@@ -95,8 +92,7 @@ export default function Navbar() {
                         className={`text-base tracking-wider transition-all duration-300 hover:text-orange-500 dark:hover:text-orange-400 uppercase relative group ${isScrolled
                                 ? 'text-gray-700 dark:text-gray-200'
                                 : 'text-black dark:text-white'
-                            }`}
-                    >
+                            }`}>
                         Contact
                         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
                     </a>
@@ -141,29 +137,25 @@ export default function Navbar() {
                         <a
                             href="/"
                             className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
+                            onClick={() => setIsMobileMenuOpen(false)}>
                             Home
                         </a>
                         <a
                             href="/projects"
                             className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
+                            onClick={() => setIsMobileMenuOpen(false)}>
                             Projects
                         </a>
                         <a
                             href="#contact"
                             onClick={handleContactClick}
-                            className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200"
-                        >
+                            className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200">
                             Contact
                         </a>
                         <a
                             href="/about"
                             className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
+                            onClick={() => setIsMobileMenuOpen(false)}>
                             About
                         </a>
                     </nav>
