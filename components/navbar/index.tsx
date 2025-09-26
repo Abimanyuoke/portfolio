@@ -11,7 +11,7 @@ export default function Navbar() {
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY;
-            setIsScrolled(scrollTop > 200);
+            setIsScrolled(scrollTop > 150);
         };
 
         // Add scroll event listener
@@ -103,15 +103,6 @@ export default function Navbar() {
                             : 'text-black dark:text-white'
                             }`}>
                         Contact
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a
-                        href="/about"
-                        className={`text-base tracking-wider transition-all duration-300 hover:text-orange-500 dark:hover:text-orange-400 uppercase relative group ${isScrolled
-                            ? 'text-gray-700 dark:text-gray-200'
-                            : 'text-black dark:text-white'
-                            }`}>
-                        About
                         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
                     </a>
                 </nav>

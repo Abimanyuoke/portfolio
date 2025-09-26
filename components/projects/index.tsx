@@ -1,8 +1,11 @@
 "use client"
 import React from "react";
 import Card from "../card";
+import { useRouter } from "next/navigation";
 
 export default function Projects() {
+    const router = useRouter();
+
     return (
         <section className="py-20 px-4 max-w-7xl mx-auto">
             {/* Section Header */}
@@ -22,7 +25,7 @@ export default function Projects() {
 
             {/* View More Button */}
             <div className="text-center mt-12">
-                <button className="px-8 py-3 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors duration-200">
+                <button className="px-8 py-3 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors duration-200" onClick={() => router.push('/projects')}>
                     View More Projects
                 </button>
             </div>
