@@ -14,7 +14,7 @@ export default function Footer() {
         },
         {
             name: "LinkedIn",
-            href: "https://linkedin.com/in/yourprofile",
+            href: "https://www.linkedin.com/in/fanani-akbar-abimanyu-978a03298/",
             icon: Linkedin,
             color: "hover:text-blue-600"
         },
@@ -26,7 +26,7 @@ export default function Footer() {
         },
         {
             name: "Instagram",
-            href: "https://instagram.com/yourhandle",
+            href: "https://www.instagram.com/fanani_abimanyu/",
             icon: Instagram,
             color: "hover:text-pink-500"
         }
@@ -43,7 +43,6 @@ export default function Footer() {
         "Web Development",
         "Mobile Apps",
         "UI/UX Design",
-        "API Development"
     ];
 
     return (
@@ -132,8 +131,7 @@ export default function Footer() {
                                         rel="noopener noreferrer"
                                         className={`p-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 ${social.color} transition-all duration-200 hover:scale-110 hover:shadow-md`}
                                         aria-label={`Visit my ${social.name} profile`}
-                                        title={social.name}
-                                    >
+                                        title={social.name}>
                                         <IconComponent className="w-5 h-5" />
                                     </a>
                                 );
@@ -145,8 +143,7 @@ export default function Footer() {
                             <input
                                 type="email"
                                 placeholder="Your email address"
-                                className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                            />
+                                className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"/>
                             <button className="w-full px-4 py-2 text-sm bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors duration-200">
                                 Subscribe to Updates
                             </button>
@@ -185,14 +182,12 @@ export default function Footer() {
                         <div className="flex space-x-4 text-sm">
                             <a
                                 href="#privacy"
-                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
-                            >
+                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200">
                                 Privacy Policy
                             </a>
                             <a
                                 href="#terms"
-                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
-                            >
+                                className="text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200">
                                 Terms of Service
                             </a>
                         </div>
@@ -204,8 +199,7 @@ export default function Footer() {
                     <button
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                         className="flex items-center space-x-2 px-4 py-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-all duration-200 hover:scale-105 shadow-lg"
-                        aria-label="Back to top"
-                    >
+                        aria-label="Back to top">
                         <span className="text-sm font-medium">Back to Top</span>
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
