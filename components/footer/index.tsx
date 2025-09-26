@@ -20,7 +20,7 @@ export default function Footer() {
         },
         {
             name: "Twitter",
-            href: "https://twitter.com/yourhandle",
+            href: "https://x.com/Abimanyuoke",
             icon: Twitter,
             color: "hover:text-blue-400"
         },
