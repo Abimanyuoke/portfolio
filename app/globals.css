@@ -124,3 +124,39 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Custom animations for mobile menu */
+@keyframes smoothBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hamburgerFlip {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(90deg) scale(0.8); }
+  100% { transform: rotate(180deg) scale(1); }
+}
+
+.smooth-bounce {
+  animation: smoothBounce 0.2s ease-in-out;
+}
+
+.fade-in-slide {
+  animation: fadeInSlide 0.4s ease-out forwards;
+}
+
+.hamburger-flip {
+  animation: hamburgerFlip 0.3s ease-in-out;
+}

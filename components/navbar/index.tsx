@@ -11,7 +11,7 @@ export default function Navbar() {
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY;
-            setIsScrolled(scrollTop > 150);
+            setIsScrolled(scrollTop > 50); // Reduced threshold for better responsiveness
         };
 
         // Add scroll event listener
@@ -23,55 +23,52 @@ export default function Navbar() {
         };
     }, []);
 
-    // Handle smooth scroll to contact
-    const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        const contactElement = document.getElementById('contact');
-        if (contactElement) {
-            contactElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-        setIsMobileMenuOpen(false);
-    };
-
-    // Close mobile menu when clicking outside or pressing escape
+    // Close mobile menu when clicking outside or scrolling
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
+            // Don't close if clicking on the menu button or inside the menu
             const target = event.target as HTMLElement;
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuButton = document.getElementById('mobile-menu-button');
-
-            // Don't close if clicking on menu button or inside the menu
-            if (menuButton?.contains(target) || mobileMenu?.contains(target)) {
+            if (target.closest('.mobile-menu-button') || target.closest('.mobile-menu')) {
                 return;
             }
-
             setIsMobileMenuOpen(false);
         };
 
-        const handleEscapeKey = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
+        const handleScroll = () => {
+            if (isMobileMenuOpen) {
                 setIsMobileMenuOpen(false);
             }
         };
 
         if (isMobileMenuOpen) {
             document.addEventListener('click', handleClickOutside);
-            document.addEventListener('keydown', handleEscapeKey);
+            window.addEventListener('scroll', handleScroll);
         }
 
         return () => {
             document.removeEventListener('click', handleClickOutside);
-            document.removeEventListener('keydown', handleEscapeKey);
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [isMobileMenuOpen]);
+
+    // Prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        // Cleanup on component unmount
+        return () => {
+            document.body.style.overflow = 'unset';
         };
     }, [isMobileMenuOpen]);
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${isScrolled
-                ? 'backdrop-blur-md bg-white/40 dark:bg-gray-900/40 shadow-lg border-b border-gray-200/20 dark:border-gray-700/20'
+            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out ${isScrolled || isMobileMenuOpen
+                ? 'backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-lg border-b border-gray-200/20 dark:border-gray-700/20'
                 : 'bg-transparent'
                 }`}>
             <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 lg:px-20">
@@ -129,54 +126,74 @@ export default function Navbar() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        id="mobile-menu-button"
                         onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
                             setIsMobileMenuOpen(!isMobileMenuOpen);
                         }}
-                        className={`md:hidden p-2 rounded-lg transition-colors duration-200 ${isScrolled
+                        className={`mobile-menu-button md:hidden p-2 rounded-lg transition-all duration-200 z-[110] relative hover:scale-105 active:scale-95 ${isScrolled
                             ? 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'
                             : 'text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10'
                             }`}
-                        aria-label="Toggle mobile menu">
-                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                        type="button">
+                        <div className="w-6 h-6 flex items-center justify-center relative">
+                            <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}>
+                                <div className={`transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'rotate-180 scale-110' : 'rotate-0 scale-100'}`}>
+                                    {isMobileMenuOpen ? (
+                                        <X size={20} className="transition-all duration-300 ease-in-out" />
+                                    ) : (
+                                        <Menu size={20} className="transition-all duration-300 ease-in-out" />
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </button>
                 </div>
             </div>
 
             {/* Mobile Menu */}
-            <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen
-                ? 'max-h-64 opacity-100'
-                : 'max-h-0 opacity-0 overflow-hidden'
+            <div className={`mobile-menu md:hidden transition-all duration-500 ease-in-out z-[105] ${isMobileMenuOpen
+                ? 'max-h-96 opacity-100 visible translate-y-0'
+                : 'max-h-0 opacity-0 invisible overflow-hidden -translate-y-4'
                 }`}>
-                <div
-                    id="mobile-menu"
-                    className={`backdrop-blur-md bg-white/90 dark:bg-gray-900/90 border-t border-gray-200/20 dark:border-gray-700/20`}>
+                <div className={`backdrop-blur-md bg-white/95 dark:bg-gray-900/95 border-t border-gray-200/20 dark:border-gray-700/20 shadow-lg transition-all duration-500 ease-in-out ${isMobileMenuOpen ? 'scale-100' : 'scale-95'}`}>
                     <nav className="flex flex-col py-4">
                         <a
                             href="/"
-                            className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200"
-                            onClick={() => setIsMobileMenuOpen(false)}>
+                            className={`block px-6 py-3 text-base tracking-wider transition-all duration-300 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200 border-l-4 border-transparent hover:border-orange-500 transform ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
+                            style={{ transitionDelay: isMobileMenuOpen ? '100ms' : '0ms' }}
+                            onClick={() => {
+                                setIsMobileMenuOpen(false);
+                            }}>
                             Home
                         </a>
                         <a
                             href="/projects"
-                            className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200"
-                            onClick={() => setIsMobileMenuOpen(false)}>
+                            className={`block px-6 py-3 text-base tracking-wider transition-all duration-300 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200 border-l-4 border-transparent hover:border-orange-500 transform ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
+                            style={{ transitionDelay: isMobileMenuOpen ? '200ms' : '0ms' }}
+                            onClick={() => {
+                                setIsMobileMenuOpen(false);
+                            }}>
                             Projects
                         </a>
                         <a
-                            href="/contact"
-                            className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200"
-                            onClick={() => setIsMobileMenuOpen(false)}>
-                            Contact
+                            href="/about"
+                            className={`block px-6 py-3 text-base tracking-wider transition-all duration-300 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200 border-l-4 border-transparent hover:border-orange-500 transform ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
+                            style={{ transitionDelay: isMobileMenuOpen ? '300ms' : '0ms' }}
+                            onClick={() => {
+                                setIsMobileMenuOpen(false);
+                            }}>
+                            About
                         </a>
                         <a
-                            href="/about"
-                            className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200"
-                            onClick={() => setIsMobileMenuOpen(false)}>
-                            About
+                            href="/contact"
+                            className={`block px-6 py-3 text-base tracking-wider transition-all duration-300 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200 border-l-4 border-transparent hover:border-orange-500 transform ${isMobileMenuOpen ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}
+                            style={{ transitionDelay: isMobileMenuOpen ? '400ms' : '0ms' }}
+                            onClick={() => {
+                                setIsMobileMenuOpen(false);
+                            }}>
+                            Contact
                         </a>
                     </nav>
                 </div>
