@@ -36,18 +36,35 @@ export default function Navbar() {
         setIsMobileMenuOpen(false);
     };
 
-    // Close mobile menu when clicking outside
+    // Close mobile menu when clicking outside or pressing escape
     useEffect(() => {
-        const handleClickOutside = () => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as HTMLElement;
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.getElementById('mobile-menu-button');
+
+            // Don't close if clicking on menu button or inside the menu
+            if (menuButton?.contains(target) || mobileMenu?.contains(target)) {
+                return;
+            }
+
             setIsMobileMenuOpen(false);
+        };
+
+        const handleEscapeKey = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setIsMobileMenuOpen(false);
+            }
         };
 
         if (isMobileMenuOpen) {
             document.addEventListener('click', handleClickOutside);
+            document.addEventListener('keydown', handleEscapeKey);
         }
 
         return () => {
             document.removeEventListener('click', handleClickOutside);
+            document.removeEventListener('keydown', handleEscapeKey);
         };
     }, [isMobileMenuOpen]);
 
@@ -96,8 +113,7 @@ export default function Navbar() {
                         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
                     </a>
                     <a
-                        href="#contact"
-                        onClick={handleContactClick}
+                        href="/contact"
                         className={`text-base tracking-wider transition-all duration-300 hover:text-orange-500 dark:hover:text-orange-400 uppercase relative group ${isScrolled
                             ? 'text-gray-700 dark:text-gray-200'
                             : 'text-black dark:text-white'
@@ -113,7 +129,9 @@ export default function Navbar() {
 
                     {/* Mobile Menu Button */}
                     <button
+                        id="mobile-menu-button"
                         onClick={(e) => {
+                            e.preventDefault();
                             e.stopPropagation();
                             setIsMobileMenuOpen(!isMobileMenuOpen);
                         }}
@@ -132,7 +150,9 @@ export default function Navbar() {
                 ? 'max-h-64 opacity-100'
                 : 'max-h-0 opacity-0 overflow-hidden'
                 }`}>
-                <div className={`backdrop-blur-md bg-white/90 dark:bg-gray-900/90 border-t border-gray-200/20 dark:border-gray-700/20`}>
+                <div
+                    id="mobile-menu"
+                    className={`backdrop-blur-md bg-white/90 dark:bg-gray-900/90 border-t border-gray-200/20 dark:border-gray-700/20`}>
                     <nav className="flex flex-col py-4">
                         <a
                             href="/"
@@ -147,9 +167,9 @@ export default function Navbar() {
                             Projects
                         </a>
                         <a
-                            href="#contact"
-                            onClick={handleContactClick}
-                            className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200">
+                            href="/contact"
+                            className="px-6 py-3 text-base tracking-wider transition-colors duration-200 hover:text-orange-500 dark:hover:text-orange-400 hover:bg-gray-50 dark:hover:bg-gray-800 uppercase text-gray-700 dark:text-gray-200"
+                            onClick={() => setIsMobileMenuOpen(false)}>
                             Contact
                         </a>
                         <a
