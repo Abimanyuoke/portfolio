@@ -86,7 +86,6 @@ export async function POST(request: NextRequest) {
         ];
 
         let transporter: nodemailer.Transporter | null = null;
-        let transporterUsed = '';
 
         // Try different transporter configurations
         for (const { name, config } of transporterConfigs) {
@@ -105,7 +104,6 @@ export async function POST(request: NextRequest) {
                 });
 
                 transporter = testTransporter;
-                transporterUsed = name;
                 console.log(`✅ Successfully configured with ${name}`);
                 break;
             } catch (error) {
