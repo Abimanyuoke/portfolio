@@ -8,4 +8,8 @@ export default {
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/**/*.{js,ts,jsx,tsx,mdx}",
     ],
+    theme: {
+        extend: {},
+    },
+    plugins: [require("tailwind-scrollbar")],
 } satisfies Config;
