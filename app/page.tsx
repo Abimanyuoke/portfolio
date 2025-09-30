@@ -14,7 +14,6 @@ export default function Home() {
     <div>
       {/* Fixed Navbar */}
       <Navbar />
-
       {/* Main Content with padding-top to account for fixed navbar */}
       <div className="pt-20">
         <div className="max-w-7xl min-h-screen mx-auto p-4">
