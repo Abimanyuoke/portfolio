@@ -13,6 +13,8 @@
 # testing
 /coverage
 
+scroll/
+
 # next.js
 /.next/
 /out/
