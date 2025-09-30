@@ -77,7 +77,7 @@ export default function TechStack() {
     return (
         <div>
             <div className="pb-20">
-                <div className="max-w-7xl mx-auto px-4">
+                <div className="max-w-7xl mx-auto p-4">
                     <h3
                         data-aos="fade-right"
                         data-aos-duration="500"
