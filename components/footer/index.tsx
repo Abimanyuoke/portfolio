@@ -41,7 +41,6 @@ export default function Footer() {
 
     const services = [
         "Web Development",
-        "Mobile Apps",
         "UI/UX Design",
     ];
 
