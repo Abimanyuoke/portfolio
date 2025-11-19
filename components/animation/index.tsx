@@ -18,7 +18,7 @@ import github from "../../public/techStack/github.svg";
 import git from "../../public/techStack/git.svg";
 import python from "../../public/techStack/python.svg";
 import photoshop from "../../public/techStack/ps.svg";
-import postgre from "../../public/techStack/postgresql.svg";
+import postgre from "../../public/techStack/postgre.svg";
 import bootstrap from "../../public/techStack/bootstrap.svg";
 import vue from "../../public/techStack/vue.svg";
 import prisma from "../../public/techStack/prisma.svg";
