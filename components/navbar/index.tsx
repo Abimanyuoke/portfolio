@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import DarkMode from "../darkMode";
+import DarkMode from "../dark";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
