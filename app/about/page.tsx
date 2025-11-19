@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import { Mail, Linkedin, Github, Twitter, MapPin, Calendar, Briefcase, GraduationCap } from "lucide-react";
+import { Mail, Linkedin, Github, Twitter, Briefcase, GraduationCap } from "lucide-react";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
@@ -294,15 +294,13 @@ export default function About() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
                                 href="/contact"
-                                className="inline-flex items-center justify-center px-6 py-3 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors duration-200"
-                            >
+                                className="inline-flex items-center justify-center px-6 py-3 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 transition-colors duration-200">
                                 <Mail className="w-5 h-5 mr-2" />
                                 Get In Touch
                             </a>
                             <a
                                 href="/projects"
-                                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
-                            >
+                                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
                                 <Briefcase className="w-5 h-5 mr-2" />
                                 View My Work
                             </a>
@@ -310,8 +308,6 @@ export default function About() {
                     </div>
                 </div>
             </div>
-
-            <Footer />
         </div>
     );
 }
