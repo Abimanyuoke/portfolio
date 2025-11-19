@@ -18,15 +18,17 @@ const allProjects = [
     },
 ];
 
-interface ProjectSearchProps {
-    onClose?: () => void;
-}
+// interface ProjectSearchProps {
+//     onClose?: () => void;
+// }
 
-export default function ProjectSearch({ onClose }: ProjectSearchProps) {
+export default function ProjectSearch() {
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredProjects, setFilteredProjects] = useState(allProjects);
     const [isSearching, setIsSearching] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState("all");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const searchRef = React.useRef<HTMLDivElement>(null);
 
     // Fungsi untuk melakukan pencarian
     const handleSearch = (query: string, category: string = selectedCategory) => {
@@ -82,9 +84,42 @@ export default function ProjectSearch({ onClose }: ProjectSearchProps) {
         setFilteredProjects(allProjects);
     }, []);
 
+    // Handle click outside dan Escape key untuk close
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+                // Jika klik di luar area search, bisa tambahkan logic close di sini
+                // setIsModalOpen(false);
+            }
+        };
+
+        const handleEscapeKey = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setIsModalOpen(false);
+                clearSearch();
+            }
+        };
+
+        // Tambahkan event listeners
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('keydown', handleEscapeKey);
+
+        // Cleanup
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('keydown', handleEscapeKey);
+        };
+    }, []);
+
+    // Handle close
+    const handleClose = () => {
+        setIsModalOpen(false);
+        clearSearch();
+    };
+
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-36">
-            <div className="max-w-7xl mx-auto px-4">
+            <div ref={searchRef} className="max-w-7xl mx-auto px-4">
                 {/* Header */}
                 <div className="text-center mb-8">
                     <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -143,6 +178,7 @@ export default function ProjectSearch({ onClose }: ProjectSearchProps) {
                 <div className="text-center mb-8">
                     <p className="text-sm text-gray-500 dark:text-gray-400">
                         Type your search query and press <kbd className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">Enter</kbd> to search
+                        {" | "}Press <kbd className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs">ESC</kbd> to clear and close
                     </p>
                 </div>
 
@@ -206,14 +242,14 @@ export default function ProjectSearch({ onClose }: ProjectSearchProps) {
                 )}
 
                 {/* Close Button (if used as modal) */}
-                {onClose && (
-                    <div className="fixed top-4 right-4">
+                {isModalOpen && (
+                    <div className="fixed top-4 right-4 z-50">
                         <button
-                            onClick={onClose}
-                            className="p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200"
+                            onClick={handleClose}
+                            className="p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 hover:bg-orange-500 hover:text-white group"
                             aria-label="Close search"
-                            title="Close search">
-                            <X className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+                            title="Close search (ESC)">
+                            <X className="h-6 w-6 text-gray-600 dark:text-gray-300 group-hover:text-white transition-colors duration-200" />
                         </button>
                     </div>
                 )}
