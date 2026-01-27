@@ -12,15 +12,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className="overflow-x-hidden">
-        <Navbar />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
+          <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
-        <Footer/>
       </body>
     </html>
   )

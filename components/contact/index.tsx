@@ -331,7 +331,7 @@ export default function Contact() {
                                 className="w-full flex items-center justify-center space-x-3 py-3 px-6 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                             >
                                 {status.type === 'loading' ? (
-                                    <div>
+                                    <div className="flex items-center justify-center">
                                         <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                                         <span>Sending...</span>
                                     </div>

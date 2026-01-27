@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
 import "./circle-transition.css";
 
 const SunIcon = () => (
@@ -26,8 +27,7 @@ const MoonIcon = () => (
 );
 
 export default function DarkMode() {
-
-    const [darkMode, setDarkMode] = useState(false);
+    const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const [circleActive, setCircleActive] = useState(false);
     const [circleStyle, setCircleStyle] = useState<React.CSSProperties>({});
@@ -35,42 +35,12 @@ export default function DarkMode() {
     const buttonRef = useRef<HTMLButtonElement | null>(null);
 
     useEffect(() => {
-        const root = document.documentElement;
-        if (darkMode) {
-            root.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-        } else {
-            root.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-        }
-    }, [darkMode]);
-
-    useEffect(() => {
-        setMounted(true); 
-        if (typeof window !== "undefined") {
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "dark") {
-                setDarkMode(true);
-                document.documentElement.classList.add("dark");
-            } else {
-                setDarkMode(false);
-                document.documentElement.classList.remove("dark");
-            }
-        }
+        setMounted(true);
     }, []);
 
-    useEffect(() => {
-        if (!mounted) return;
-        if (darkMode) {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-        }
-    }, [darkMode, mounted]);
-
     if (!mounted) return null;
+
+    const isDark = theme === "dark";
 
 
 
@@ -86,16 +56,16 @@ export default function DarkMode() {
                 borderRadius: "50%",
                 zIndex: 9999,
                 pointerEvents: "none",
-                background: darkMode ? "#eee" : "#222",
+                background: isDark ? "#eee" : "#222",
                 transition: "none",
                 transform: "translate(-50%, -50%)",
-                animation: darkMode ? "circle-move-dark 0.8s forwards" : "circle-move-light 0.8s forwards",
+                animation: isDark ? "circle-move-dark 0.8s forwards" : "circle-move-light 0.8s forwards",
             });
         }
         setCircleActive(true);
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
         timeoutRef.current = setTimeout(() => {
-            setDarkMode((prev) => !prev);
+            setTheme(isDark ? "light" : "dark");
             setCircleActive(false);
         }, 800);
     };
@@ -110,7 +80,7 @@ export default function DarkMode() {
                     height: 48,
                     borderRadius: 16,
                     border: "none",
-                    background: darkMode ? "#222" : "#eee",
+                    background: isDark ? "#222" : "#eee",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -126,9 +96,9 @@ export default function DarkMode() {
                     style={{
                         display: "block",
                         transition: "transform 0.5s cubic-bezier(.68,-0.55,.27,1.55)",
-                        transform: darkMode ? "rotate(360deg) scale(1.1)" : "rotate(0deg) scale(1)",
+                        transform: isDark ? "rotate(360deg) scale(1.1)" : "rotate(0deg) scale(1)",
                     }}>
-                    {darkMode ? <SunIcon /> : <MoonIcon />}
+                    {isDark ? <SunIcon /> : <MoonIcon />}
                 </span>
             </button>
             {
