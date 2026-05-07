@@ -6,6 +6,7 @@ import AnimationLanguages from "../components/animation";
 import Hero from "../components/hero";
 import Projects from "../components/projects";
 import Contact from "../components/contact";
+import ScrollingBand from "@/components/scrolling/scrolling-band";
 
 
 export default function Home() {
@@ -25,6 +26,27 @@ export default function Home() {
         <Projects />
         <div id="contact">
           <Contact />
+
+          {/* <main className="relative min-h-screen bg-zinc-100 flex items-center justify-center overflow-hidden">
+
+            <div className="relative w-full py-20 flex flex-col items-center justify-center">
+
+              <ScrollingBand
+                baseVelocity={-1}
+                text="Custom Web Experiences"
+                className="bg-black text-white py-4 rotate-[-5deg] scale-110 shadow-xl z-10"
+              />
+
+              <ScrollingBand
+                baseVelocity={1}
+                text="Innovative Self-Made Creations"
+                className="bg-lime-400 text-black py-4 rotate-[5deg] scale-110 shadow-xl -mt-12 z-20"
+              />
+
+            </div>
+
+          </main> */}
+
         </div>
       </div>
     </div>

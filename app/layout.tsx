@@ -3,6 +3,7 @@ import { ThemeProvider } from "../components/theme-provider"
 import "./globals.css"
 import Footer from "@/components/footer";
 import Preloader from "@/components/preloader/preloader";
+import CustomCursor from "@/components/cursor/custom-cursor";
 
 type RootLayoutProps = {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body className="overflow-x-hidden">
         <Preloader />
+        <CustomCursor />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
