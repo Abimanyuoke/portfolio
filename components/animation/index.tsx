@@ -25,7 +25,7 @@ import prisma from "../../public/techStack/prisma.svg";
 import vite from "../../public/techStack/vitejs.svg";
 import supabase from "../../public/techStack/supabase.svg";
 import vercel from "../../public/techStack/vercel.svg";
-import TechItem from "./TechItem";
+import TechItem from "./tech-item";
 import Marquee from "react-fast-marquee";
 import { StaticImageData } from "next/image";
 
@@ -74,54 +74,56 @@ export default function TechStack() {
         { title: "MySQL", ImgTech: mySQL },
     ];
 
+    const renderRow = (data: ItemProops[]) => (
+        <div className="flex items-center">
+            {/* Kita bungkus dengan gap-8 sampai gap-12 yang konsisten */}
+            <div className="flex items-center gap-8 md:gap-16 px-4 md:px-8 ">
+                {data.map((item, i) => (
+                    <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
+                ))}
+            </div>
+            <div className="flex items-center gap-8 md:gap-16 px-4 md:px-8">
+                {data.map((item, i) => (
+                    <TechItem key={`dup-${i}`} title={item.title} ImgTech={item.ImgTech} />
+                ))}
+            </div>
+        </div>
+    );
+
     return (
-        <div>
+        <div className="bg-white dark:bg-[#0a0a0a] overflow-hidden w-full">
             <div className="pb-20">
                 <div className="max-w-7xl mx-auto p-4">
                     <h3
                         data-aos="fade-right"
-                        data-aos-duration="500"
-                        className="text-surface-50 font-medium xl:text-[36px] lg:text-[34px] md:text-[32px] sm:text-[30px] text-[28px] py-20">
-                        I have used <span className="text-[#ffc95b]">30+ </span>programming langguages, frameworks, and digital tools{" "}
+                        className="text- dark:text-black mx-auto font-medium lg:text-[36px] md:text-[32px] text-[24px] py-16 md:py-24 leading-tight">
+                        I have used <span className="text-[#ffc95b]">30+ </span>
+                        programming languages, frameworks, and digital tools
                     </h3>
                 </div>
-                <div className="space-y-4">
-                    <Marquee direction="right" speed={50} loop={0}>
-                        <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
-                            <div className="items-center flex space-x-6">
-                                {[...row1].map((item, i) => (
-                                    <TechItem key={i} title={item.title} ImgTech={item.ImgTech}/>
-                                ))}
-                            </div>
-                        </div>
+
+                <div className="space-y-6 md:space-y-10">
+
+                    {/* Row 1 */}
+                    <Marquee direction="right" speed={50} gradient={false}>
+                        {renderRow(row1)}
                     </Marquee>
-                    <Marquee direction="left" speed={50} loop={0}>
-                        <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
-                            <div className="items-center flex space-x-6">
-                                {[...row2].map((item, i) => (
-                                    <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
-                                ))}
-                            </div>
-                        </div>
+
+                    {/* Row 2 */}
+                    <Marquee direction="left" speed={45} gradient={false}>
+                        {renderRow(row2)}
                     </Marquee>
-                    <Marquee direction="right" speed={50} loop={0}>
-                        <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
-                            <div className="items-center flex space-x-6">
-                                {[...row3].map((item, i) => (
-                                    <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
-                                ))}
-                            </div>
-                        </div>
+
+                    {/* Row 3 */}
+                    <Marquee direction="right" speed={40} gradient={false}>
+                        {renderRow(row3)}
                     </Marquee>
-                    <Marquee direction="left" speed={50} loop={0}>
-                        <div data-aos="fade-up" data-aos-duration="500" className="mx-auto">
-                            <div className="items-center flex space-x-5">
-                                {[...row4].map((item, i) => (
-                                    <TechItem key={i} title={item.title} ImgTech={item.ImgTech} />
-                                ))}
-                            </div>
-                        </div>
+
+                    {/* Row 4 */}
+                    <Marquee direction="left" speed={55} gradient={false}>
+                        {renderRow(row4)}
                     </Marquee>
+
                 </div>
             </div>
         </div>

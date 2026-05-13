@@ -3,67 +3,11 @@
 import React from "react";
 import { Mail, Linkedin, Github, Twitter, Briefcase, GraduationCap } from "lucide-react";
 import Navbar from "../../components/navbar";
-import Footer from "../../components/footer";
+import JourneyTimeline from "./_components/vertical-roadmap/roadmap";
+import Shuffle from "@/components/react-bits/suffle-text";
+
 
 export default function About() {
-    const experiences = [
-        {
-            id: 1,
-            company: "Zero One Group",
-            position: "Product Engineer",
-            period: "Jan 2023 — Now",
-            logo: "🚀",
-            color: "bg-black text-white"
-        },
-        {
-            id: 2,
-            company: "Revou",
-            position: "Software Engineer Mentor",
-            period: "Apr 2024 — Jun 2024",
-            logo: "💡",
-            color: "bg-yellow-400 text-black"
-        },
-        {
-            id: 3,
-            company: "Shumi",
-            position: "Frontend Engineer",
-            period: "Sep 2019 — Jan 2023",
-            logo: "$",
-            color: "bg-green-500 text-white"
-        },
-        {
-            id: 4,
-            company: "Digiflux Indonesia",
-            position: "Frontend Developer",
-            period: "Nov 2021 — Mar 2022",
-            logo: "🌐",
-            color: "bg-blue-500 text-white"
-        },
-        {
-            id: 5,
-            company: "Gojek",
-            position: "Software Engineer Intern",
-            period: "Aug 2021 — Jan 2022",
-            logo: "🏍️",
-            color: "bg-green-600 text-white"
-        },
-        {
-            id: 6,
-            company: "Techbros GmbH",
-            position: "Software Engineer Intern",
-            period: "Jul 2021 — Sep 2021",
-            logo: "⚡",
-            color: "bg-purple-500 text-white"
-        },
-        {
-            id: 7,
-            company: "Produk Telkom University",
-            position: "Software Engineer",
-            period: "Jan 2020 — Jul 2021",
-            logo: "🎓",
-            color: "bg-blue-600 text-white"
-        }
-    ];
 
     const socialLinks = [
         {
@@ -107,10 +51,22 @@ export default function About() {
                             </div>
                         </div>
 
-                        {/* Name and Title */}
-                        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                            Fanani Akbar Abimanyu
-                        </h1>
+                        <Shuffle
+                            text="Fanani Akbar Abimanyu"
+                            shuffleDirection="right"
+                            duration={0.35}
+                            animationMode="evenodd"
+                            shuffleTimes={1}
+                            ease="power3.out"
+                            stagger={0.03}
+                            threshold={0.1}
+                            triggerOnce={true}
+                            triggerOnHover
+                            respectReducedMotion={true}
+                            loop={false}
+                            loopDelay={0}
+                            className="font-[family-name:var(--font-pixel)] text-3xl text-yellow-400 [text-rendering:pixelated] antialiased-none drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]"
+                        />
                         <p className="text-lg text-gray-600 dark:text-gray-300 mb-2">
                             <span className="text-orange-500">Full Stack Developer</span> • <span className="text-blue-500">Indonesia</span>
                         </p>
@@ -143,39 +99,11 @@ export default function About() {
                         </div>
                     </div>
 
-                    {/* Experiences Section */}
-                    <div className="mb-12">
-                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
-                            <Briefcase className="w-6 h-6 mr-3 text-orange-500" />
-                            Experiences
-                        </h2>
-
-                        <div className="space-y-6">
-                            {experiences.map((exp) => (
-                                <div key={exp.id} className="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200">
-                                    {/* Company Logo */}
-                                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-xl font-bold ${exp.color} flex-shrink-0`}>
-                                        {exp.logo}
-                                    </div>
-
-                                    {/* Experience Details */}
-                                    <div className="flex-1 min-w-0">
-                                        <div className="flex items-start justify-between">
-                                            <div>
-                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                                                    {exp.company}
-                                                </h3>
-                                                <p className="text-gray-600 dark:text-gray-300">
-                                                    {exp.position}
-                                                </p>
-                                            </div>
-                                            <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap ml-4">
-                                                {exp.period}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                    {/* Journey Timeline */}
+                    <div className="relative mb-12">
+                        {/* Vertical Line */}
+                        <div>
+                            <JourneyTimeline />
                         </div>
                     </div>
 

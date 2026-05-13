@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Mail, User, MessageSquare, Send, CheckCircle, AlertCircle, MapPin } from "lucide-react";
 import { toast, Toaster } from 'sonner';
+import TextPressure from "../react-bits/preasure-text";
 
 
 interface FormData {
@@ -146,9 +147,20 @@ export default function Contact() {
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        Get In Touch
-                    </h2>
+                    <div className="dark:text-white text-black">
+                        <TextPressure
+                            text="Get in Touch"
+                            flex
+                            alpha={false}
+                            stroke={false}
+                            width
+                            weight
+                            italic
+                            textColor="currentColor"
+                            strokeColor="#5227FF"
+                            minFontSize={24}
+                        />
+                    </div>
                     <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                         Have a project in mind or want to collaborate? I'd love to hear from you.
                         Send me a message and I'll get back to you as soon as possible.
@@ -229,7 +241,7 @@ export default function Contact() {
                                     className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-colors duration-200"
                                     aria-label="Visit my Instagram profile"
                                     title="Instagram">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className ="lucide lucide-instagram-icon lucide-instagram  text-gray-600 dark:text-gray-300"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-instagram-icon lucide-instagram  text-gray-600 dark:text-gray-300"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
                                 </a>
                             </div>
                         </div>

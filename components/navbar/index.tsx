@@ -68,7 +68,7 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out ${isScrolled || isMobileMenuOpen
-                ? 'backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-lg border-b border-gray-200/20 dark:border-gray-700/20'
+                ? 'backdrop-blur-md bg-white/30 dark:bg-gray-900/30 shadow-lg border-b border-gray-200/20 dark:border-gray-700/20'
                 : 'bg-transparent'
                 }`}>
             <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 lg:px-20">
