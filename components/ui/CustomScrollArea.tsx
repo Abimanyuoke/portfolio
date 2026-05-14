@@ -1,7 +1,7 @@
 "use client";
 
 import React, { forwardRef } from 'react';
-import { useCustomScrollbar, ScrollbarVariant } from '../../hooks/useCustomScrollbar';
+import { useCustomScrollbar, ScrollbarVariant } from '../../hooks/use-custom-scrollbar';
 
 interface CustomScrollAreaProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;

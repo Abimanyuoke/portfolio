@@ -99,14 +99,6 @@ export default function About() {
                         </div>
                     </div>
 
-                    {/* Journey Timeline */}
-                    <div className="relative mb-12">
-                        {/* Vertical Line */}
-                        <div>
-                            <JourneyTimeline />
-                        </div>
-                    </div>
-
                     {/* Skills Section */}
                     <div className="mb-12">
                         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">

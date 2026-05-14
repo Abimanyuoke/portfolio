@@ -96,7 +96,7 @@ export default function TechStack() {
                 <div className="max-w-7xl mx-auto p-4">
                     <h3
                         data-aos="fade-right"
-                        className="text- dark:text-black mx-auto font-medium lg:text-[36px] md:text-[32px] text-[24px] py-16 md:py-24 leading-tight">
+                        className="text-current text-center font-medium lg:text-[36px] md:text-[32px] text-[24px] py-16 md:py-24 leading-tight">
                         I have used <span className="text-[#ffc95b]">30+ </span>
                         programming languages, frameworks, and digital tools
                     </h3>
