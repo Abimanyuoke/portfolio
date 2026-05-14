@@ -9,6 +9,7 @@ import Contact from "../components/contact";
 import ScrollingBand from "@/components/scrolling/scrolling-band";
 import AboutMe from "@/components/common/about-hero";
 import JourneyTimeline from "./about/_components/vertical-roadmap/roadmap";
+import AboutSection from "@/components/common/about-hero-section";
 
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
           <Hero />
         </div>
         <AboutMe />
+        <AboutSection/>
         <AnimationLanguages />
         {/* Journey Timeline */}
         <div className="relative mb-12">

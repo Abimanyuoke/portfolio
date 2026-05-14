@@ -18,20 +18,20 @@ export default function AboutSection() {
         restDelta: 0.001
     });
 
-    const borderRadius = useTransform(smoothProgress, [0, 1], ["20%", "0%"]);
+    const borderRadius = useTransform(smoothProgress, [0, 1], ["10%", "0%"]);
 
     // Efek scale sedikit membesar saat muncul
     const scale = useTransform(smoothProgress, [0, 1], [0.9, 1]);
 
     return (
-        <section ref={containerRef} className="relative bg-white dark:bg-gray-900 pt-20">
+        <section ref={containerRef} className="relative bg-[#0a0a0a] overflow-hidden">
             <motion.div
                 style={{
                     borderTopLeftRadius: borderRadius,
                     borderTopRightRadius: borderRadius,
                     scale
                 }}
-                className="relative min-h-screen w-full bg-[#0a0a0a] flex flex-col items-center justify-center overflow-hidden origin-bottom"
+                className="relative min-h-screen w-full bg-white flex flex-col items-center justify-center overflow-hidden origin-bottom"
             >
                 <div className="max-w-5xl px-6 py-20 text-center">
                     <motion.h1

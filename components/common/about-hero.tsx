@@ -2,14 +2,29 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import AboutSection from "./about-hero-section";
+import ShapeGrid from "../react-bits/shape-grid";
 
 export default function AboutHero() {
-
     return (
-        <section className="relative bg-white dark:bg-gray-900 overflow-visible my-6">
-            <div className="relative min-h-[110vh] w-full bg-[#0a0a0a] flex flex-col items-center justify-center -mt-[100px] z-10">
-                <div className="max-w-5xl px-6 py-32 text-center">
+        <section className="relative bg-white dark:bg-gray-900 overflow-visible mt-6">
+            {/* Main Black Container */}
+            <div className="relative min-h-[110vh] w-full bg-[#0a0a0a] flex flex-col items-center justify-center -mt-[100px] z-10 overflow-hidden">
+
+                {/* BACKGROUND LAYER: ShapeGrid */}
+                <div className="absolute inset-0 z-10 opacity-90"> {/* Opacity dikurangi agar teks tetap terbaca tajam */}
+                    <ShapeGrid
+                        speed={0.5}
+                        squareSize={40}
+                        direction='diagonal' // up, down, left, right, diagonal
+                        borderColor="#2F293A"
+                        hoverFillColor='#222'
+                        shape='square' // square, hexagon, circle, triangle
+                        hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
+                    />
+                </div>
+
+                {/* CONTENT LAYER: Text and Button */}
+                <div className="relative z-10 max-w-5xl px-6 py-32 text-center">
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -38,13 +53,9 @@ export default function AboutHero() {
                         </button>
                     </div>
                 </div>
-                 {/* Journey Timeline */}
-                    <div className="relative">
-                        {/* Vertical Line */}
-                        <div>
-                            <AboutSection />
-                        </div>
-                    </div>
+
+                {/* Optional: Overlay Gradient agar grid halus di bagian pinggir */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a] z-[5]" />
             </div>
         </section>
     );
